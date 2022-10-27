@@ -1,6 +1,8 @@
 use std::env;
+use std::net::IpAddr;
+use std::net::Ipv4Addr;
 
-use rocket::config::{Config, Environment};
+use rocket::config::Config;
 use serenity::async_trait;
 use serenity::builder::CreateMessage;
 use serenity::model::channel::Message;
@@ -128,18 +130,19 @@ fn hello(lang: Option<Lang>, opt: Options<'_>) -> String {
 
 #[rocket::main]
 async fn main() -> Result<(), rocket::Error> {
-    // let config = Config::build(Environment::Staging)
-    //     .address("1.2.3.4")
-    //     .port(9234)
-    //     .finalize()?;
+    let mut config = Config::default();
+    let any_network = Ipv4Addr::new(0, 0, 0, 0);
+    config.address = IpAddr::V4(any_network);
 
-    // rocket::custom(config)
-    //     .mount("/", routes![/* .. */])
-    //     .launch();
-    let _rocket = rocket::build()
+    rocket::custom(config)
         .mount("/discord", routes![discord])
         .launch()
-        .await?;
+        .await;
+
+    // let _rocket = rocket::build()
+    //     .mount("/discord", routes![discord])
+    //     .launch()
+    //     .await?;
 
     Ok(())
 }

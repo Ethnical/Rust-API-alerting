@@ -19,6 +19,6 @@ features = [
     "http",
     "model",
     "utils",
-    "rustls_backend",
+    "rustls_backend"
 ]
 version = "0.11"
