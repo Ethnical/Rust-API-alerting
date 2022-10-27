@@ -130,6 +130,8 @@ fn hello(lang: Option<Lang>, opt: Options<'_>) -> String {
 
 #[rocket::main]
 async fn main() -> Result<(), rocket::Error> {
+    env::var("DISCORD_TOKEN")
+        .expect("Expected a token in the environment variable : DISCORD_TOKEN use export=token");
     let mut config = Config::default();
     let any_network = Ipv4Addr::new(0, 0, 0, 0);
     config.address = IpAddr::V4(any_network);
