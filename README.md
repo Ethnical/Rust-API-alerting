@@ -15,5 +15,6 @@ Don't forget to use the Discord token using the ENV variable `export DISCORD_TOK
 
 ![image](https://user-images.githubusercontent.com/23560242/198521827-c75e53a7-7be3-4e1b-b1a0-163f768ca923.png)
 
-this will result to : 
+Then this will create a message to the `channelID` hardcoded.
+
 ![image](https://user-images.githubusercontent.com/23560242/198522741-ef1d1962-ca2b-46af-8fd9-517a33beaf2f.png)
